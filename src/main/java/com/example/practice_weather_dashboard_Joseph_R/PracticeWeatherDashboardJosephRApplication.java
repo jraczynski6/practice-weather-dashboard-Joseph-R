@@ -1,6 +1,7 @@
 package com.example.practice_weather_dashboard_Joseph_R;
 
 import com.example.practice_weather_dashboard_Joseph_R.config.ApiConfig;
+import com.example.practice_weather_dashboard_Joseph_R.model.WeatherResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
@@ -48,4 +49,10 @@ public class PracticeWeatherDashboardJosephRApplication {
         }
 	}
 
+    private static void fetchAndDisplay(String city, RestTemplate restTemplate, String apiKey) {
+        String url = "https://api.openweathermap.org/data/2.5/weather?q="
+                + city + apiKey + "&units=imperial";
+
+        WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
+    }
 }
