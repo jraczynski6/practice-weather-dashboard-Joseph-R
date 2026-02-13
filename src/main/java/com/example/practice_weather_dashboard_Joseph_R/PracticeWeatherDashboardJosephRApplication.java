@@ -51,7 +51,7 @@ public class PracticeWeatherDashboardJosephRApplication {
 
     private static void fetchAndDisplay(String city, RestTemplate restTemplate, String apiKey) {
         String url = "https://api.openweathermap.org/data/2.5/weather?q="
-                + city + apiKey + "&units=imperial";
+                + city + "&appid=" + apiKey + "&units=imperial";
 
         WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
 
@@ -60,4 +60,5 @@ public class PracticeWeatherDashboardJosephRApplication {
         System.out.println("Humidity: " + response.getMain().getHumidity() + "%");
         System.out.println("Condition: " + response.getWeather()[0].getDescription());
     }
+
 }
