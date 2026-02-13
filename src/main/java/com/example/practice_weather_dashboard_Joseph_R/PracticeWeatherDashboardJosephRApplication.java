@@ -11,8 +11,8 @@ import java.util.Scanner;
 @SpringBootApplication
 public class PracticeWeatherDashboardJosephRApplication {
 
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(PracticeWeatherDashboardJosephRApplication.class, args);
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(PracticeWeatherDashboardJosephRApplication.class, args);
 
         RestTemplate restTemplate = new RestTemplate();
         String apiKey = ApiConfig.getApiKey();
@@ -47,7 +47,7 @@ public class PracticeWeatherDashboardJosephRApplication {
                     System.out.println("Invalid option. Please try again.");
             }
         }
-	}
+    }
 
     private static void fetchAndDisplay(String city, RestTemplate restTemplate, String apiKey) {
         String url = "https://api.openweathermap.org/data/2.5/weather?q="
@@ -56,9 +56,12 @@ public class PracticeWeatherDashboardJosephRApplication {
         WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
 
         System.out.println("\n=== Weather in " + city + " ===");
-        System.out.println("Temperature: " + response.getMain().getTemp() + "°F");
-        System.out.println("Humidity: " + response.getMain().getHumidity() + "%");
-        System.out.println("Condition: " + response.getWeather()[0].getDescription());
+        if (response != null && response.getMain() != null && response.getWeather() != null && response.getWeather().length > 0) {
+            System.out.println("Temperature: " + response.getMain().getTemp() + "°F");
+            System.out.println("Humidity: " + response.getMain().getHumidity() + "%");
+            System.out.println("Condition: " + response.getWeather()[0].getDescription());
+        } else {
+            System.out.println("Weather data not available for " + city);
+        }
     }
-
 }
