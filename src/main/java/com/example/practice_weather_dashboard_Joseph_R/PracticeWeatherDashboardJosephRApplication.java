@@ -54,5 +54,10 @@ public class PracticeWeatherDashboardJosephRApplication {
                 + city + apiKey + "&units=imperial";
 
         WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
+
+        System.out.println("\n=== Weather in " + city + " ===");
+        System.out.println("Temperature: " + response.getMain().getTemp() + "°F");
+        System.out.println("Humidity: " + response.getMain().getHumidity() + "%");
+        System.out.println("Condition: " + response.getWeather()[0].getDescription());
     }
 }
