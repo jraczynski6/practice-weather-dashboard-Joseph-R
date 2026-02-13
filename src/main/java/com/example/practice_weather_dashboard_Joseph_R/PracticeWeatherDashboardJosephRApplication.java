@@ -27,9 +27,25 @@ public class PracticeWeatherDashboardJosephRApplication {
 
             int choice = scanner.nextInt();
             scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    fetchAndDisplay("New York", restTemplate, apiKey);
+                    break;
+                case 2:
+                    fetchAndDisplay("St. Louis", restTemplate, apiKey);
+                    break;
+                case 3:
+                    fetchAndDisplay("Chicago", restTemplate, apiKey);
+                    break;
+                case 4:
+                    System.out.println("Goodbye!");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
         }
-
-
 	}
 
 }
