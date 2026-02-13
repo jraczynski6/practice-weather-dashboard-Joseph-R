@@ -11,6 +11,7 @@ package com.example.practice_weather_dashboard_Joseph_R.model;
 //          { "description": "clear sky" }
 //        ]
 //      }
+// Create 3 classes: WeatherResponse, Main, WeatherDescription
 
 public class WeatherResponse {
 

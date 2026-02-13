@@ -26,6 +26,7 @@ public class PracticeWeatherDashboardJosephRApplication {
             System.out.println("4. Exit");
             System.out.print("Choose an option: ");
 
+            // Read user input and handle non-integer input
             String input = scanner.nextLine();
             int choice;
 
@@ -63,6 +64,7 @@ public class PracticeWeatherDashboardJosephRApplication {
         WeatherResponse response = restTemplate.getForObject(url, WeatherResponse.class);
 
         System.out.println("\n=== Weather in " + city + " ===");
+        // Check if response is valid
         if (response != null && response.getMain() != null && response.getWeather() != null && response.getWeather().length > 0) {
             System.out.println("Temperature: " + response.getMain().getTemp() + "°F");
             System.out.println("Humidity: " + response.getMain().getHumidity() + "%");
